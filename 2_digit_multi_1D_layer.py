@@ -11,7 +11,7 @@ M = 60
 N = 30
 
 # Init
-print 'Initialisation'
+print('Initialisation')
 
 x = tf.placeholder(tf.float32, [None, imageSize])
 
@@ -39,7 +39,7 @@ y4 = tf.nn.relu(tf.matmul(y3, W4) + b4)
 y = tf.nn.softmax(tf.matmul(y4, W5) + b5)
 
 # Training
-print 'Training'
+print('Training')
 y_ = tf.placeholder(tf.float32, [None, 10])
 cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y), reduction_indices=[1]))
 
@@ -55,7 +55,7 @@ for i in range(1000):
   sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})
 
 # Evaluation
-print 'Evaluation'
+print('Evaluation')
 correct_prediction = tf.equal(tf.argmax(y,1), tf.argmax(y_,1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
